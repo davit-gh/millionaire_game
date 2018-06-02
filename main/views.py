@@ -80,7 +80,7 @@ def start(request):
     This function is called when START or START AGAIN
     buttons are clicked to (re)initialize the session.
     """
-    q_count = 2
+    q_count = 5
     question_pks = Question.objects.values_list('pk', flat=True)
     if len(question_pks) < q_count:
         warning = "Not enough questions. Please add more."
