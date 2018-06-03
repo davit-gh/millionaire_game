@@ -21,12 +21,11 @@ The Django app is deployed on pythonanywhere.com for demonstration purposes.
 
 When logged into the admin interface:
 
-Select "Questions" to create/edit question
-* Set question points
-* Add as many answers as needed by clicking on "Add another Answer"
-* Check that only one answer can be selected as correct 
-
-To to see all the registered users and their earned highest point. Go to "Profiles"
+* Select "Questions" to create/edit question
+	* Set question points
+	* Add as many answers as needed by clicking on "Add another Answer"
+	* Check that only one answer can be selected as correct 
+* To to see all the registered users and their earned highest points please navigate to "Profiles"
 
 # Tests
 
