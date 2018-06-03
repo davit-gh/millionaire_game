@@ -3,17 +3,19 @@
 {% block title %}Leaderboard{% endblock %}
 
 {% block content %}
-	<ul>
-		{% for profile in profiles %}
-			<li>
-				{{ profile.user.first_name }}
-				{{ profile.user.last_name }} 
-				-- {{ profile.points }} points
-			</li>
-		{% empty %}
-		    <li>Sorry, no results yet.</li>
-		{% endfor %}
-	</ul>
+	<div class="center-block">	
+		<ul>
+			{% for profile in profiles %}
+				<li>
+					{{ profile.user.first_name }}
+					{{ profile.user.last_name }} 
+					-- <strong>{{ profile.points }}</strong> points
+				</li>
+			{% empty %}
+			    <li>Sorry, no results yet.</li>
+			{% endfor %}
+		</ul>
+	</div>
 {% endblock %}
 
 {% block lb_link %}{% endblock %}

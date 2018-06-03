@@ -25,7 +25,7 @@ When logged into the admin interface:
 	* Set question points
 	* Add as many answers as needed by clicking on "Add another Answer"
 	* Check that only one answer can be selected as correct 
-* To to see all the registered users and their earned highest points please navigate to "Profiles"
+* To see all the registered users and their earned highest points please navigate to "Profiles"
 
 # Tests
 

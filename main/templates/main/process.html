@@ -3,28 +3,32 @@
 {% block title %}Q & A{% endblock %}
 
 {% block content %}
-	<h3>Your points: {{ request.session.points|default:"0" }}</h3>
-	<p>{{ question.text }}</p>
-	{% if not response and not is_empty %}
-		<form method="post">
-			{% csrf_token %}
-			{% for answer in question.answers.all %}
-				<input type="radio" name="answer_pk" value="{{ answer.pk }}">{{ answer }}<br/>
-			{% endfor %}
-			<input type="submit" value="Answer">
-		</form>
-	{% else %}
-		<p>{{ response }} </p>
-		{% if not is_empty %}
-			<p>
-				<a href="{% url 'process' %}">NEXT QUESTION</a>
-			</p>
+	<div class="text-center">
+		<h3>Your points: {{ request.session.points|default:"0" }}</h3>
+		<p>{{ question.text }}</p>
+		{% if not response and not is_empty %}
+			<form method="post">
+				{% csrf_token %}
+				{% for answer in question.answers.all %}
+					<input type="radio" name="answer_pk" value="{{ answer.pk }}">{{ answer }}<br/>
+				{% endfor %}
+				<div class="margin-top-20">
+					<button class="btn btn-default" type="submit">Answer</button>
+				</div>
+			</form>
 		{% else %}
-			<h2>Questions are exhausted.</h2>
-			<p>
-				<a href="{% url 'start' %}">PLAY AGAIN</a>
-			</p>
+			<p>{{ response }} </p>
+			{% if not is_empty %}
+				<p>
+					<a class="btn btn-default" href="{% url 'process' %}">NEXT QUESTION</a>
+				</p>
+			{% else %}
+				<h2>Questions are exhausted.</h2>
+				<p>
+					<a class="btn btn-primary" href="{% url 'start' %}">PLAY AGAIN</a>
+				</p>
+			{% endif %}
 		{% endif %}
-	{% endif %}
+	</div>
 {% endblock %}
 				

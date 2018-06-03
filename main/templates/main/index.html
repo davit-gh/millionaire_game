@@ -1,28 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{% block title %}Quiz Game{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/styles.css' %}">
 </head>
 <body>
-	<h1>Who Wants To Be Millionaire</h1>
-
-	{% if user.is_authenticated %}
-	    <p>Welcome, {{ user.first_name }}. Thanks for logging in.</p>
-	     <a href="{% url 'logout' %}">logout</a>
-	{% else %}
-	    <p>Welcome, new user. Please <a href="{% url 'login' %}">log in</a>.</p>
-	{% endif %}
-
-	{% block content %}
-		<p>
-			<a href="{% url 'start' %}">START THE GAME</a>
-		</p>
-	{% endblock %}
-
-	{% block lb_link %}	
+	<h1 class="text-center">Who Wants To Be A Millionaire</h1>
+	<div class="text-right">
+		{% if user.is_authenticated %}
+		    <p>Welcome, <strong>{{ user.first_name }}</strong>. Thanks for logging in.</p>
+		    <h3><a href="{% url 'logout' %}">Log out</a></h3>
+		{% else %}
+		    <p>Welcome, new user. Please <a href="{% url 'login' %}">log in</a>.</p>
+		{% endif %}
+		{% block lb_link %}	
 		<p>
 			<a href="{% url 'leaderboard' %}">Show Leaderboard</a>
 		</p>
 	{% endblock %}
+	</div>
+	{% block content %}
+		<p class="text-center">
+			<a class="btn btn-primary" href="{% url 'start' %}">START THE GAME</a>
+		</p>
+	{% endblock %}
+
+	
 </body>
 </html>
