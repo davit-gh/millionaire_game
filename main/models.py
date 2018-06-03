@@ -25,7 +25,7 @@ class Question(models.Model):
     )
 
     def __str__(self):
-        return self.text
+        return self.text[:40]
 
 
 @python_2_unicode_compatible

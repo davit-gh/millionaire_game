@@ -16,3 +16,19 @@ The Django app is deployed on pythonanywhere.com for demonstration purposes.
 * Admin URL - [http://millionaire.pythonanywhere.com/admin](http://millionaire.pythonanywhere.com/admin)
 * Admin Username - admin
 * Admin Password - Admin123
+
+# Add/modify Questions and Answers
+
+When logged into the admin interface:
+Select "Questions" to create/edit question
+* Set question points
+* Add as many answers as needed by clicking on "Add another Answer"
+* Check that only one answer can be selected as correct 
+
+To to see all the registered users and their earned highest point. Go to "Profiles"
+
+# Tests
+
+Automatic tests are added for 'main' app in 'main/tests.py'. These tests cover user authentication scenarios including redirect checks. Tests can be run by
+ 
+    ./manage.py test main

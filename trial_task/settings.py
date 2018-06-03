@@ -25,7 +25,7 @@ SECRET_KEY = '0!nqv)^02u2&9!-fhmi@i&^+=xn&r&bs@c+akmyp34)ih0cpj-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["millionaire.pythonanywhere.com"]
+ALLOWED_HOSTS = ["millionaire.pythonanywhere.com", "localhost"]
 
 
 # Application definition
@@ -126,4 +126,3 @@ PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
 PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
-
