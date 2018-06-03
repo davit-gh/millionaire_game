@@ -20,6 +20,7 @@ The Django app is deployed on pythonanywhere.com for demonstration purposes.
 # Add/modify Questions and Answers
 
 When logged into the admin interface:
+
 Select "Questions" to create/edit question
 * Set question points
 * Add as many answers as needed by clicking on "Add another Answer"
