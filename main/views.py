@@ -37,21 +37,23 @@ def process(request, template_name="main/process.html"):
     """
     shuffled_pks = request.session.get('shuffled_pks')
     if request.method == 'POST':
-        answer_pk = request.POST.get('answer_pk')
-        answer = get_object_or_404(Answer, pk=answer_pk)
+        answer_pks = request.POST.getlist('answer_pk')
+        answer_pks=[int(pk) for pk in answer_pks]
+        question_pk = request.POST.get('question_pk')
+        question = get_object_or_404(Question, pk=question_pk)
+        correct_ans = question.answers.filter(is_correct=True)
+        correct_ans_pks = correct_ans.values_list('pk', flat=True)
         shuffled_pks.pop()
         is_empty = len(shuffled_pks) == 0
-        if answer.is_correct:
-            points = answer.question.points
+        if set(correct_ans_pks) == set(answer_pks):
+            points = question.points
             request.session['points'] += points
             response = "Your answer is correct. \
                         You earned {} points!".format(points)
         else:
-            correct_answer = answer.question.answers.filter(
-                is_correct=True
-            ).first()
+            correct_ans = [answer.text for answer in correct_ans]
             response = "Your answer is wrong. \
-                        The correct answer is: {}".format(correct_answer)
+                        The correct answer(s): {}".format(", ".join(correct_ans))
 
         if is_empty:
             profile = request.user.profile
@@ -61,7 +63,7 @@ def process(request, template_name="main/process.html"):
 
         context = {
             'response': response,
-            'question': answer.question,
+            'question': question,
             'is_empty': is_empty
         }
         request.session['shuffled_pks'] = shuffled_pks

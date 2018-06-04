@@ -9,8 +9,9 @@
 		{% if not response and not is_empty %}
 			<form method="post">
 				{% csrf_token %}
+				<input type="hidden" name="question_pk" value="{{ question.pk }}">
 				{% for answer in question.answers.all %}
-					<input type="radio" name="answer_pk" value="{{ answer.pk }}">{{ answer }}<br/>
+					<input type="checkbox" name="answer_pk" value="{{ answer.pk }}">{{ answer }}<br/>
 				{% endfor %}
 				<div class="margin-top-20">
 					<button class="btn btn-default" type="submit">Answer</button>
